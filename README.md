@@ -4,5 +4,5 @@
 - `my_boat.urdf`: file 3D barca, con aggiunta del sonar
 
 ## Avvio rapido
-1. Terminale 1: `./start_boat.sh` (attendere ~10s)
+1. Terminale 1: `./start_boat.sh`
 2. Terminale 2: `python3 boat_tracker.py --ros-args -p use_sim_time:=true`
