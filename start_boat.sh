@@ -7,7 +7,7 @@ source /opt/ros/jazzy/setup.bash
 source ~/marine_ws/install/setup.bash
 
 echo "Avvio simulazione WAM-V..."
-ros2 launch vrx_gz competition.launch.py urdf:=$HOME/my_boat.urdf headless:=False locked:=false &
+ros2 launch vrx_gz competition.launch.py urdf:=$(dirname "$(realpath "$0")")/my_boat.urdf headless:=False locked:=false &
 
 echo "Attendo 10 secondi il caricamento dell'oceano..."
 sleep 10

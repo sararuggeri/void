@@ -14,6 +14,7 @@ class KalmanDistance1D:
     """
     Filtro di Kalman 1D lineare [distanza_m, velocita_relativa_mps].
     Fonde camera e sonar con pesi 50/50 (tramite varianze di misura) e scarta outlier via gating.
+    Serve per guidare il catamarano verso la persona.
     """
 
     def __init__(self, initial_dist=5.0, reliability_cam=0.5, reliability_sonar=0.5):
