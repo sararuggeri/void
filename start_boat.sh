@@ -65,5 +65,6 @@ ros2 run ros_gz_bridge parameter_bridge /wamv/sonar_servo_cmd@std_msgs/msg/Float
 ros2 run ros_gz_bridge parameter_bridge /wamv/sensors/sonar/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan &
 ros2 run ros_gz_bridge parameter_bridge /wamv/thrusters/left/thrust@std_msgs/msg/Float64]gz.msgs.Double &
 ros2 run ros_gz_bridge parameter_bridge /wamv/thrusters/right/thrust@std_msgs/msg/Float64]gz.msgs.Double &
+ros2 run ros_gz_bridge parameter_bridge /wamv/sensors/gps/gps/fix@sensor_msgs/msg/NavSatFix[gz.msgs.NavSat &
 
 wait

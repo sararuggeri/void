@@ -3,6 +3,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import Image, LaserScan
 from std_msgs.msg import Float64
+from gps_tracker import GPSTracker
 from cv_bridge import CvBridge
 import cv2
 import numpy as np
@@ -96,6 +97,7 @@ class BoatTracker(Node):
         self.bridge = CvBridge()
         self.latest_sonar_range = None
         self.kf = KalmanDistance1D(initial_dist=5.0, reliability_cam=0.5, reliability_sonar=0.5)
+        self.gps = GPSTracker(self)
 
         now_sec = self._now_sec()
         self.last_time_sec = now_sec
@@ -289,7 +291,8 @@ class BoatTracker(Node):
                     cv_image, f"Perso -> {side_label} | KF:{fused_dist:.2f}m", (20, 35),
                     cv2.FONT_HERSHEY_SIMPLEX, 0.65, (0, 140, 255), 2
                 )
-
+                
+            self.gps.report_step(now_sec, mode_txt, fused_dist_m=fused_dist)
             cv2.imshow("Fusion Tracker - YOLO + Kalman (50/50)", cv_image)
             cv2.waitKey(1)
 
@@ -304,6 +307,10 @@ class BoatTracker(Node):
                 self.publish_thrust(0.0, 0.0)
         except Exception:
             pass
+        try:
+            self.gps.close()
+        except Exception:
+            pass
 
 
 def main(args=None):
@@ -315,10 +322,12 @@ def main(args=None):
         pass
     finally:
         node.stop_motors_safely()
+        node.gps.close()
         node.destroy_node()
         cv2.destroyAllWindows()
         if rclpy.ok():
             rclpy.shutdown()
+
 
 
 if __name__ == '__main__':
