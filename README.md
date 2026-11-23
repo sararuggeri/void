@@ -1,5 +1,5 @@
 ## File principali
-- `start_boat.sh`: avvia Gazebo/VRX, spawna il nuotatore a più waypoint e configura i bridge ROS 2.
+- `start_boat.sh`: avvia Gazebo, spawna il nuotatore , lo muove e configura i bridge ROS 2.
 - `boat_tracker.py`: rilevamento persona con YOLOv8, stima distanza con filtro di Kalman 1D e controllo motori.
 - `my_boat.urdf`: file 3D barca, con aggiunta del sonar
 
