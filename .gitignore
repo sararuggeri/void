@@ -1,8 +1,39 @@
 *.mp4
 *.avi
 *.pt
+
+# Python environments and caches
+.venv/
+venv/
+env/
 __pycache__/
-*.pyc
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# macOS metadata
 .DS_Store
+
+# Local stereo-calibration captures
+# These images are hardware-specific and should be recreated by each operator.
+stereo_calibration/left/
+stereo_calibration/right/
+stereo_calibration/left_v*/
+stereo_calibration/right_v*/
+
+# Generated stereo-calibration artifacts
+stereo_calibration/stereo_calib.npz
+stereo_calibration/stereo_calib.yaml
+stereo_calibration/rectified_check.png
+stereo_calibration/calibration_coverage.png
+
+# Runtime output and temporary reports
+boat_trajectory.csv
+*.log
+technical_report.pdf
+technical_report.md
+
+# Credentials
 psw.txt
 psw.txt.pub
